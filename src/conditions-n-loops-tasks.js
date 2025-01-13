@@ -399,26 +399,24 @@ function getSpiralMatrix(size) {
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
-/**
- * Rotates a square matrix 90 degrees clockwise.
- * @example
- * [
- *   [1, 2, 3],        [7, 4, 1],
- *   [4, 5, 6],  =>    [8, 5, 2],
- *   [7, 8, 9]         [9, 6, 3]
- * ]
- */
-/**
- * Rotates a square matrix 90 degrees clockwise.
- * @example
- * [
- *   [1, 2, 3],        [7, 4, 1],
- *   [4, 5, 6],  =>    [8, 5, 2],
- *   [7, 8, 9]         [9, 6, 3]
- * ]
- */
-function rotateMatrix(/* matrix */) {
-  throw new Error('Not implemented');
+function rotateMatrix(matrix) {
+  const newArray = matrix;
+  const n = matrix.length;
+
+  for (let row = 0; row < n; row += 1) {
+    for (let column = row + 1; column < n; column += 1) {
+      const temp = newArray[row][column];
+      newArray[row][column] = newArray[column][row];
+      newArray[column][row] = temp;
+    }
+  }
+  for (let row = 0; row < n; row += 1) {
+    for (let column = 0; column < Math.floor(n / 2); column += 1) {
+      const temp = newArray[row][column];
+      newArray[row][column] = newArray[row][n - column - 1];
+      newArray[row][n - column - 1] = temp;
+    }
+  }
 }
 
 /**
